@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+​
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+​
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+​
+        <style>
+            .wrap {
+                width: 700px;
+                margin: 10px auto;
+                
+​
+            }
+    
+            .price{
+                font-size: 15px;
+                
+            }
+            
+            .btn-center{
+                text-align: center;
+                
+            }
+​
+            .btn{
+                display: inline-block;
+            }
+​
+            .card{
+                font-family: 'Jua', sans-serif;
+            }
+​
+            .input-group{
+                font-family: 'Noto Sans KR', sans-serif;
+            }
+    
+            .form-inline{
+                width: 1000px;
+            }
+    
+            .comment {
+                color: skyblue;
+            }
+    
+            .post {
+                width: 500px;
+                border: 3px solid black;
+                padding: 30px;
+                margin: 30px auto;
+                border-radius: 10px;
+            }
+        </style>
+    <!-- Optional JavaScript -->
+    <script>
+        function order() {
+            alert('주문이 완료되었습니다.!');
+        }
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+​
+    <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+</head>
+​
+<body>
+    <div class="wrap">
+        <div class="card mb-3">
+            <img class="card-img-top" src="https://www.dailysecu.com/news/photo/201912/86417_89395_2432.jpg" alt="Card image cap">
+            <div class="card-body">
+                <div class="title">
+                    <h1 class="card-title">핸드폰을 팝니다 <span class="price">가격 : 500,000원 / 1대</span></h1>
+                </div>
+                <p class="card-text">이 핸드폰은 아주 신기한 핸드폰입니다. 가격이 조금 비싸기는 하지만 이 정도라면 투자할만한 가치는 있지 않을까요? 참고로 저는 아이폰 6s를 사용하고 있습니다.</p>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">주문자 이름</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">수량</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected>-- 수량을 선택하세요 --</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">주소</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">전화번호</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="btn-center">
+            <button type="button" onclick="order()" class="btn btn-primary">주문하기</button>
+        </div>
+    </div>
+</body>
+​
+</html>
