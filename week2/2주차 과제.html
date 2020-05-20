@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+        <style>
+            .wrap {
+                width: 700px;
+                margin: 10px auto;
+                
+
+            }
+    
+            .price{
+                font-size: 15px;
+                
+            }
+            
+            .blue{
+                color: blue;
+            }
+
+            .btn-center{
+                text-align: center;
+                
+            }
+
+            .btn{
+                display: inline-block;
+            }
+
+            .order_table{
+                margin-top: 100px;
+            }
+
+            table {
+            width: 700px;
+            border-left: 0px solid;
+            border-right: 0px solid;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            border-collapse: collapse;
+            }
+
+            thead > tr{
+                border-bottom: 1px solid;
+            }
+
+            td,
+            th {
+                padding: 10px;
+                border-left: 0px solid;
+            }
+
+            .card{
+                font-family: 'Jua', sans-serif;
+            }
+
+            .input-group{
+                font-family: 'Noto Sans KR', sans-serif;
+            }
+    
+            .form-inline{
+                width: 1000px;
+            }
+    
+            .comment {
+                color: skyblue;
+            }
+    
+            .post {
+                width: 500px;
+                border: 3px solid black;
+                padding: 30px;
+                margin: 30px auto;
+                border-radius: 10px;
+            }
+        </style>
+    <!-- Optional JavaScript -->
+    <script>
+        function order() {
+            let name_sentence = $('#names').val()
+            let Select01 = $('#inputGroupSelect01').val()
+            let address_sentence = $('#address').val()
+            let numbers_sentence = $('#numbers').val()
+            if(name_sentence == ""){
+                alert('이름을 입력해주세요.');    
+            }else{
+                temp_name_sentence = name_sentence
+            }
+
+            if(Select01 == "none"){
+                alert('수량을 입력해주세요.');    
+            }else{
+                temp_Select01 = Select01
+            }
+
+            if(address_sentence == ""){
+                alert('주소를 입력해주세요.');    
+            }else{
+                temp_address_sentence = address_sentence
+            }
+
+            if(numbers_sentence == ""){
+                alert('전화번호를 입력해주세요.');    
+            }else if(numbers_sentence.includes("-") == false){
+                alert("전화번호 유효성 검사에 실패하셨습니다( '-' 기호를 추가해주세요.)")
+            }else if(numbers_sentence.split("-")[0] != "010"){
+                alert("전화번호 유효성 검사에 실패하셨습니다('010으로 시작되지 않습니다.')")
+            }else{
+                temp_numbers_sentence = numbers_sentence
+            }            
+            
+            let temp_html = `<tr>
+                                <td>${temp_name_sentence}</td>
+                                <td>${temp_Select01}</td>
+                                <td>${temp_address_sentence}</td>
+                                <td>${temp_numbers_sentence}</td>
+                            </tr>`
+            $('#order_list').append(temp_html)
+            
+        }
+        
+
+        $(document).ready(function() {
+            alert("로딩이 완료되었습니다.");
+            $.ajax({
+                type: "GET",
+                url:"https://api.manana.kr/exchange/rate.json",
+                data:{},
+                success:function(response){
+                    let rate = response[1]["rate"]
+                    $('#meaning').text(rate)
+                }
+            })
+        })
+
+    </script>
+    <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="card mb-3">
+            <img class="card-img-top" src="https://www.dailysecu.com/news/photo/201912/86417_89395_2432.jpg" alt="Card image cap">
+            <div class="card-body">
+                <div class="title">
+                    <h1 class="card-title">핸드폰을 팝니다 <span class="price">가격 : 500,000원 / 1대</span></h1>
+                </div>
+                <p class="card-text">이 핸드폰은 아주 신기한 핸드폰입니다. 가격이 조금 비싸기는 하지만 이 정도라면 투자할만한 가치는 있지 않을까요? 참고로 저는 아이폰 6s를 사용하고 있습니다.</p>
+            </div>
+        </div>
+        <div>
+            <p class="blue">달러-원 환율 : <span id="meaning"></span></p>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">주문자 이름</span>
+            </div>
+            <input type="text" id="names" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">수량</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+              <option value="none">-- 수량을 선택하세요 --</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">주소</span>
+            </div>
+            <input type="text" id="address" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">전화번호</span>
+            </div>
+            <input type="text" id="numbers" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="btn-center">
+            <button type="button" onclick="order()" class="btn btn-primary">주문하기</button>
+        </div>
+        <div>
+            <table class="order_table">
+                <thead>
+                    <tr>
+                        <td>이름</td>
+                        <td>수량</td>
+                        <td>주소</td>
+                        <td>전화번호</td>
+                    </tr>
+                </thead>
+                <tbody id="order_list">
+                    <tr>
+                        <td>가나다</td>
+                        <td>2</td>
+                        <td>test</td>
+                        <td>010-0000-5555</td>
+                    </tr>
+                    <tr>
+                        <td>가나다</td>
+                        <td>2</td>
+                        <td>test</td>
+                        <td>010-0000-5555</td>
+                    </tr>
+                    <tr>
+                        <td>가나다</td>
+                        <td>2</td>
+                        <td>test</td>
+                        <td>010-0000-5555</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+
+</html>
