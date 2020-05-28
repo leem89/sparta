@@ -15,7 +15,7 @@ for index, music in enumerate(musics):
     title = music.get_text().strip()
     print(str(index + 1) + '.', title)
 
-
+#<score를 따로 빼서 해결하려고 했지만 실패....
 # import requests
 # from bs4 import BeautifulSoup
 
